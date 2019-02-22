@@ -1,0 +1,58 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: dubbo-demo-consumer
+
+demo:
+  service:
+    version: 1.0.0
+dubbo:
+  application:
+    id: dubbo-demo-consumer
+    name: dubbo-demo-consumer
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 12345
+  registry:
+    address: nacos://127.0.0.1:8848
+
+endpoints:
+  dubbo:
+    enabled: true
+
+management:
+  server:
+    port: 8082
+  health:
+    dubbo:
+      status:
+        defaults: memory
+  endpoint:
+    dubbo:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-configs:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-references:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: ["health","info","env","metrics","prometheus"]
+  metrics:
+    binders:
+      jvm:
+        enabled: true
+    export:
+      datadog:
+        enabled: true
+      prometheus:
+        enabled: true
+    use-global-registry: true

@@ -1,0 +1,23 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: dubbo-demo-provider
+
+demo:
+  service:
+    version: 1.0.0
+dubbo:
+  application:
+    id: dubbo-demo-provider
+    name: dubbo-demo-provider
+  scan:
+    basePackages: cn.v5cn.dubbo.demo.provider.service
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 12345
+  registry:
+    address: nacos://127.0.0.1:8848
+
+
